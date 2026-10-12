@@ -23,6 +23,9 @@ for oracion in doc.sents:
 
 print(f"Total de oraciones procesadas: {len(corpus_lematizado)}")
 
+with open("texto_procesado.txt", "w", encoding="utf-8") as f:
+    f.write("\n".join(corpus_lematizado))
+
 
 def graficar_palabras_3d(ax, matriz, vocabulario, titulo, color_puntos, n=60):
     matriz_palabras = matriz.T
@@ -72,4 +75,5 @@ vocab_tfidf = tfidf_vectorizer.get_feature_names_out()
 graficar_palabras_3d(ax2, X_tfidf, vocab_tfidf, "Espacio TF-IDF 3D (Importancia)", "teal")
 
 plt.tight_layout()
+plt.savefig("espacio_bow_tfidf.png", dpi=150)
 plt.show()
